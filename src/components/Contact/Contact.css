@@ -1,0 +1,30 @@
+.contact-div {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #262626;
+    padding:3px;
+}
+
+.text-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:40px;
+    width: 40rem;
+}
+
+.delete-button {
+    color: white;
+    border:none;
+    border-radius: 3px;
+    background-color: #da0b0b;
+    width: 5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #980505;
+}
