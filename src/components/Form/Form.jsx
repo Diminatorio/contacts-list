@@ -41,7 +41,7 @@ class Form extends React.Component {
     render(){
         return (
             <>
-                <form onSubmit={this.onAddContact} onReset={this.resetForm}>
+                <form onSubmit={this.onAddContact} onReset={this.resetForm} className="form">
                     <div className="text-inputs-container">
                         <input type="text"
                                name="firstName"
@@ -71,6 +71,7 @@ class Form extends React.Component {
                         />
                         <input className="button reset" type="reset" value="Clear"/>
                     </div>
+                    <button className="button close" onClick={this.props.onHideForm}>Cancel</button>
 
                 </form>
 
