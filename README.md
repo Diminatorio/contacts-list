@@ -3,7 +3,8 @@
 ## The goal
 
 The goal of this project is to help you see your list of\
-contacts and add or delete them.
+contacts and add or delete them.\
+Remade on the functional components
 
 ## Available Scripts
 
