@@ -1,78 +1,75 @@
-import React from "react";
+import React, {useState} from "react";
 import './Form.css'
 import TextInput from "../TextInput";
 
+function Form (props) {
+    const [formState, setFormState] = useState({
+                                                firstName: '',
+                                                lastName: '',
+                                                phoneNumber: ''})
 
-class Form extends React.Component {
-
-    state = {
-        firstName: '',
-        lastName: '',
-        phoneNumber: ''
-    }
-
-
-    onInputChange = (ev) => {
+    const onInputChange = (ev) => {
         const { value, name } = ev.target;
-        this.setState({
-            ...this.state,
+        setFormState({
+            ...formState,
             [name]: value,
         });
     }
 
-    onAddContact = (ev) => {
+    const onAddContact = (ev) => {
         ev.preventDefault(); // stop sending form data
         const regex = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?/ //phone number regExp
-        if (regex.test(this.state.phoneNumber)) {
-            this.props.onAddContact(this.state); //add contact
-            this.resetForm(); //reset form
-            this.props.onHideForm() //hide form
+        if (regex.test(formState.phoneNumber)) {
+            props.onAddContact(formState); //add contact
+            resetForm(); //reset form
+            props.onHideForm() //hide form
         } else {
-            this.setState({phoneNumber: 'Invalid Number'}) // change phoneNumber input to invalid text
+            setFormState({
+                firstName:formState.firstName,
+                lastName: formState.lastName,
+                phoneNumber: 'Invalid Number'}) // change phoneNumber input to invalid text
         }
-
     }
 
-    resetForm = () => { //just reset form
-        this.setState({ firstName: '',
-                             lastName: '',
-                             phoneNumber: ''})
+    const resetForm = () => { //just reset form
+        setFormState({ firstName: '',
+            lastName: '',
+            phoneNumber: ''})
     }
 
-    render(){
-        return (
-            <>
-                <form onSubmit={this.onAddContact} onReset={this.resetForm} className="form">
-                    <div className="text-inputs-container">
-                        <TextInput name="firstName"
-                                   placeholder="First name"
-                                   value={this.state.firstName}
-                                   onInputChange={this.onInputChange}/>
-                        <TextInput name="lastName"
-                                   placeholder="Last name"
-                                   value={this.state.lastName}
-                                   onInputChange={this.onInputChange}/>
-                        <TextInput name="phoneNumber"
-                                   placeholder="Phone number"
-                                   value={this.state.phoneNumber}
-                                   onInputChange={this.onInputChange}/>
-                    </div>
-                    <div className="buttons-container">
-                        <input className="button submit" type="submit" value="Add"
-                               disabled={  // if each field is empty - the button is disabled, else - not
-                            !(this.state.firstName !== ''
-                                && this.state.lastName !== ''
-                                && this.state.phoneNumber !=='')? 'true': ''}
-                        />
-                        <input className="button reset" type="reset" value="Clear"/> {/*to reset data*/}
-                    </div>
-                    <button className="button close" onClick={this.props.onHideForm}>Cancel</button> {/*cancel adding*/}
+    return (
+        <>
+            <form onSubmit={onAddContact} onReset={resetForm} className="form">
+                <div className="text-inputs-container">
+                    <TextInput name="firstName"
+                               placeholder="First name"
+                               value={formState.firstName}
+                               onInputChange={onInputChange}/>
+                    <TextInput name="lastName"
+                               placeholder="Last name"
+                               value={formState.lastName}
+                               onInputChange={onInputChange}/>
+                    <TextInput name="phoneNumber"
+                               placeholder="Phone number"
+                               value={formState.phoneNumber}
+                               onInputChange={onInputChange}/>
+                </div>
+                <div className="buttons-container">
+                    <input className="button submit" type="submit" value="Add"
+                           disabled={  // if each field is empty - the button is disabled, else - not
+                               !(formState.firstName !== ''
+                                   && formState.lastName !== ''
+                                   && formState.phoneNumber !=='')? 'true': ''}
+                    />
+                    <input className="button reset" type="reset" value="Clear"/> {/*to reset data*/}
+                </div>
+                <button className="button close" onClick={props.onHideForm}>Cancel</button> {/*cancel adding*/}
 
-                </form>
+            </form>
 
-            </>
-        )
-    }
+        </>
+    )
+
 }
 
 export default Form;

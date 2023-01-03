@@ -1,18 +1,16 @@
 import React from "react";
 import './TextInput.css'
 
-class TextInput extends React.Component {
-    render() {
-        return (
-            <input type="text"
-                   name={this.props.name}
-                   placeholder={this.props.placeholder}
-                   required
-                   value={this.props.value}
-                   onChange={this.props.onInputChange}
-                   className="form-text-input"/>
-        )
-    }
+function TextInput (props) {
+    return (
+        <input type="text"
+               name={props.name}
+               placeholder={props.placeholder}
+               required
+               value={props.value}
+               onChange={props.onInputChange}
+               className="form-text-input"/>
+    )
 }
 
 export default TextInput
