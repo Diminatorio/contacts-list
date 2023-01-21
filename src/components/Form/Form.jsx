@@ -6,7 +6,7 @@ function Form (props) {
     const [formState, setFormState] = useState({
                                                 firstName: '',
                                                 lastName: '',
-                                                phoneNumber: ''})
+                                                phone: ''})
 
     const onInputChange = (ev) => {
         const { value, name } = ev.target;
@@ -19,7 +19,7 @@ function Form (props) {
     const onAddContact = (ev) => {
         ev.preventDefault(); // stop sending form data
         const regex = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?/ //phone number regExp
-        if (regex.test(formState.phoneNumber)) {
+        if (regex.test(formState.phone)) {
             props.onAddContact(formState); //add contact
             resetForm(); //reset form
             props.onHideForm() //hide form
@@ -27,14 +27,15 @@ function Form (props) {
             setFormState({
                 firstName:formState.firstName,
                 lastName: formState.lastName,
-                phoneNumber: 'Invalid Number'}) // change phoneNumber input to invalid text
+                phone: 'Invalid Number'}) // change phone input to invalid text
         }
     }
 
     const resetForm = () => { //just reset form
-        setFormState({ firstName: '',
+        setFormState({
+            firstName: '',
             lastName: '',
-            phoneNumber: ''})
+            phone: ''})
     }
 
     return (
@@ -49,9 +50,9 @@ function Form (props) {
                                placeholder="Last name"
                                value={formState.lastName}
                                onInputChange={onInputChange}/>
-                    <TextInput name="phoneNumber"
+                    <TextInput name="phone"
                                placeholder="Phone number"
-                               value={formState.phoneNumber}
+                               value={formState.phone}
                                onInputChange={onInputChange}/>
                 </div>
                 <div className="buttons-container">
@@ -59,7 +60,7 @@ function Form (props) {
                            disabled={  // if each field is empty - the button is disabled, else - not
                                !(formState.firstName !== ''
                                    && formState.lastName !== ''
-                                   && formState.phoneNumber !=='')? 'true': ''}
+                                   && formState.phone !=='')? 'true': ''}
                     />
                     <input className="button reset" type="reset" value="Clear"/> {/*to reset data*/}
                 </div>

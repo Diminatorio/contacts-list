@@ -10,10 +10,9 @@ function Contact (props) {
         <div className="contact-div">
             <div className="text-container">
                 <div>
-                    <span>{props.item.firstName} </span>
-                    <span>{props.item.lastName}</span>
+                    <span>{props.item.name} </span>
                 </div>
-                <span>{props.item.phoneNumber}</span>
+                <span>{props.item.phone.split(' ')[0]}</span>
             </div>
 
             <button className="delete-button" onClick={clickDelete}>Delete</button>
