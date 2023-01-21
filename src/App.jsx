@@ -1,16 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 import useContacts from "./hooks/useContacts/useContacts";
 import './App.css';
 import ContactList from "./components/ContactList";
 import Form from './components/Form';
+import useForm from "./hooks/useForm/useForm";
 
 function App () {
     const {contacts, deleteContact, addContact} = useContacts()
-
-    const [formVisible, setFormVisible] = useState({formVisible: false});
-    const onChangeFormVisible = () => {
-        setFormVisible({formVisible: !formVisible.formVisible})
-    }
+    const {formVisible, onChangeFormVisible} = useForm()
 
     return (
         <div className="App">
