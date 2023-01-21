@@ -18,7 +18,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 ---
+# Fetch API
+#### In this project I used fetch API to get some information about people from website
+`https://jsonplaceholder.typicode.com/users/`
 
+---
 ## Main components
 
 There are a few components:
@@ -45,6 +49,16 @@ There are a few components:
 ---
 ## TextInput
 #### Is the component that provides text inputs in form
+
+---
+## Hooks
+
+## useContacts
+#### is the hook that provides adding and deleting contacts
+
+---
+## useForm
+#### is the hook that provides changing of form visible
 
 
 
