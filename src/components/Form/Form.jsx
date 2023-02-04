@@ -27,7 +27,8 @@ function Form (props) {
             setFormState({
                 firstName:formState.firstName,
                 lastName: formState.lastName,
-                phone: 'Invalid Number'}) // change phone input to invalid text
+                phone: 'Invalid Number'
+            }) // change phone input to invalid text
         }
     }
 
@@ -60,7 +61,7 @@ function Form (props) {
                            disabled={  // if each field is empty - the button is disabled, else - not
                                !(formState.firstName !== ''
                                    && formState.lastName !== ''
-                                   && formState.phone !=='')? 'true': ''}
+                                   && formState.phone !=='')? true: ''}
                     />
                     <input className="button reset" type="reset" value="Clear"/> {/*to reset data*/}
                 </div>

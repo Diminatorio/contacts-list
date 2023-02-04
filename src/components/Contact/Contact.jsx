@@ -1,18 +1,17 @@
 import React from "react";
 import './Contact.css';
 
-function Contact (props) {
+function Contact ({onDeleteContact, item}) {
     const clickDelete = () => {
-        props.onDeleteContact(props.item.id)
+        onDeleteContact(item.id)
     }
-
     return (
         <div className="contact-div">
             <div className="text-container">
                 <div>
-                    <span>{props.item.name} </span>
+                    <span>{item.name} </span>
                 </div>
-                <span>{props.item.phone.split(' ')[0]}</span>
+                <span>{item.phone.split(' ')[0]}</span>
             </div>
 
             <button className="delete-button" onClick={clickDelete}>Delete</button>

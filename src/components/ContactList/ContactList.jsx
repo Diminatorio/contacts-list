@@ -2,13 +2,13 @@ import React from "react";
 import './ContactList.css'
 import Contact from "../Contact";
 
-function ContactList (props) {
+function ContactList ({contacts, onDeleteContact}) {
     return (
         <div className="items-container">
-            {props.contacts.map(item =>(
+            {contacts.map(item =>(
                 <Contact item={item}
                          key={item.id}
-                         onDeleteContact={props.onDeleteContact}/>
+                         onDeleteContact={onDeleteContact}/>
             ))}
         </div>
     )
