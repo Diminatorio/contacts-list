@@ -16,7 +16,6 @@ export default function useReduxContacts() {
 
         if (!notFirst) {
             if (localStorage.getItem('contacts')) {
-                console.log(localStorage.getItem('contacts'))
                 if (JSON.parse(localStorage.getItem('contacts')).contacts.length) {
                     const localData = JSON.parse(localStorage.getItem('contacts')).contacts
                     fetch(CONTACTS_URL, {
